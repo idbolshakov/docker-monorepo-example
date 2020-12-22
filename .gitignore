@@ -1,0 +1,9 @@
+# misc
+.DS_Store
+
+# vim
+*.swo
+*.swp
+
+node_modules/
+build/

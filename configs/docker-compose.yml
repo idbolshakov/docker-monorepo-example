@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+  app:
+    image: "node:${NODE_VERSION}"
+    user: "node"
+    stdin_open: true
+    tty: true
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+      - PORT=${PORT}
+    volumes:
+     - ../scopes/${SCOPE}:/home/node/app
+     - ../scripts:/home/node/scripts
+     - ../common:/home/node/app/src/common
+    expose:
+      - "${PORT}"
+    ports:
+      - "${PORT}:${PORT}"
+    command: "sh /home/node/scripts/entrypoints/${ACTION}.sh"
